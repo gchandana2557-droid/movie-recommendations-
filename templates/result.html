@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/static/style.css">
+    <title>Movie Recommendations</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
 <div class="box">
 
-<h1>Recommended Movies For {{name}}</h1>
+<h1>Recommended Movies For {{ name }}</h1>
 
 {% if movies %}
 
 <ul>
 {% for movie in movies %}
-<li>{{movie}}</li>
+<li>{{ movie }}</li>
 {% endfor %}
 </ul>
 
 {% else %}
 
-<h2>No movies found.</h2>
+<h2>{{ message }}</h2>
+
+<form action="/" method="get">
+    <button type="submit">Try Again</button>
+</form>
 
 {% endif %}
 

@@ -42,10 +42,19 @@ def result():
 
     movie_list = filtered["Movie"].tolist()
 
+    if len(movie_list) == 0:
+        return render_template(
+            "result.html",
+            name=session["name"],
+            movies=[],
+            message="Sorry! No movies found. Please try again."
+        )
+
     return render_template(
         "result.html",
         name=session["name"],
-        movies=movie_list
+        movies=movie_list,
+        message=""
     )
 
 if __name__ == "__main__":
