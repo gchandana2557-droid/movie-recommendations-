@@ -7,24 +7,31 @@ app.secret_key = "movieproject"
 # Read movie data
 movies = pd.read_csv("movies.csv")
 
+
 @app.route("/")
 def home():
     return render_template("name.html")
+
 
 @app.route("/language", methods=["POST"])
 def language():
     session["name"] = request.form["name"]
     return render_template("language.html")
 
+
 @app.route("/genre", methods=["POST"])
 def genre():
     session["language"] = request.form["language"]
     return render_template("genre.html")
 
-@app.route("/rating", methods=["POST"])
+
+@app.route("/rating", methods=["GET", "POST"])
 def rating():
-    session["genre"] = request.form["genre"]
+    if request.method == "POST":
+        session["genre"] = request.form["genre"]
+
     return render_template("rating.html")
+
 
 @app.route("/result", methods=["POST"])
 def result():
@@ -47,7 +54,7 @@ def result():
             "result.html",
             name=session["name"],
             movies=[],
-            message="Sorry! No movies found. Please try again."
+            message="No movies found! Please change the rating and try again."
         )
 
     return render_template(
@@ -56,6 +63,7 @@ def result():
         movies=movie_list,
         message=""
     )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
