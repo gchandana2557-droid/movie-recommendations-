@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="box">
+
+<h1>Recommended Movies For {{name}}</h1>
+
+{% if movies %}
+
+<ul>
+{% for movie in movies %}
+<li>{{movie}}</li>
+{% endfor %}
+</ul>
+
+{% else %}
+
+<h2>No movies found.</h2>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

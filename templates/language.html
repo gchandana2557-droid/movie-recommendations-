@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Netflix Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">🎬 Movie Recommendation </div>
+</div>
+
+<div class="container">
+    <h2>Select Language</h2>
+
+    <form action="/genre" method="post">
+        <select name="language">
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Kannada</option>
+            <option>Telugu</option>
+            <option>Tamil</option>
+            <option>Malayalam</option>
+            <option>Chinese</option>
+            <option>Korean</option>
+            <option>Japanese</option>
+            <option>Spanish</option>
+        </select>
+
+        <button type="submit">Next</button>
+    </form>
+</div>
+
+</body>
+</html>
